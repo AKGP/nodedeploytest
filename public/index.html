@@ -1,0 +1,741 @@
+<html ng-app="myApp">
+   <head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+      <title>
+         Btech Project App
+      </title>
+      <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+      <script src ="js/ext.js"></script>
+      <style type="text/css">
+         .input {
+         width: 33%;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="container" ng-controller="AppCtrl">
+       
+         <h1>Geotechinal Database model</h1>
+         <table class="table">
+            <tbody>
+               <tr>
+                  <td class="btn" href="#" id="button1">
+                     Instruments
+                  </td>
+                  <td class="btn" href="#" id="button3">
+                     Mine Activities
+                  </td>
+                  <td class="btn" href="#" id="button4">
+                     Geotechnical Personnel
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+
+         <div id="item1" class="container" style="display:none">
+            <table class="table">
+               <tbody>
+                  <tr>
+                     <td>
+                        <div class="col-md-3">
+                           <button class='btn btn-info' id="rock-type-details">Rock Type Details</button>
+                        </div>
+                        <div class="col-md-3">
+                           <button class='btn btn-info' id="new_instrument">New Instrument Installation</button>
+                        </div>
+                        <div class="col-md-3">
+                           <button class='btn btn-info'>View Result</button>
+                        </div>
+                        <div class="col-md-3">
+                           <button class='btn btn-info'>Summary/Find Instrument</button>
+                        </div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <div id='rock-type-details-form' style="display:none">
+               <table>
+                  <tbody>
+                     <tr>
+                        <td class="col-md-3">
+                           Rock Type
+                           <input class='form-control' ng-model="rtd.rock_type">
+                        </td>
+                        <td class="col-md-3">
+                           Friction angle
+                           <input class='form-control' ng-model="rtd.friction_angle">
+                        </td>
+                        <td height="60px"></td>
+                     </tr>
+                     <tr>
+                        <td class="col-md-3">
+                           UCS
+                           <input class='form-control' ng-model="rtd.ucs">
+                        </td>
+                        <td class="col-md-3">
+                           Cohesion angle
+                           <input class='form-control' ng-model="rtd.cohesion_angle">
+                        </td>
+                        <td height="60px"></td>
+                     </tr>
+                     <tr>
+                        <td class="col-md-3">
+                           Tensile Strength
+                           <input class='form-control' ng-model="rtd.tensile_strength">
+                        </td>
+                        <td class="col-md-3">RQD
+                           <input class='form-control' ng-model="rtd.rqd">
+                        </td>
+                        <td height="60px"></td>
+                     </tr>
+                     <tr>
+                        <td class="col-md-3">
+                           Young's Modulus
+                           <input class='form-control' ng-model="rtd.youngs_modulus">
+                        </td>
+                        <td class="col-md-3">
+                           Poisson's Ratio
+                           <input class='form-control' ng-model="rtd.poissons_ration">
+                        </td>
+                        <td height="60px"></td>
+                     </tr>
+                     <tr>
+                        <td class="col-md-3">
+                           <button class='btn btn-primary' ng-click="add1()">Add</button>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+
+ <h2>Rock Type Details</h2>
+           <table class="table">
+
+              <thead>
+                  <tr>
+                     <td>
+                        Rock Type
+                     </td>
+                     <td>
+                        UCS
+                     </td>
+                     <td>
+                       Tensile Strength
+                     </td>
+                     <td>Young Modulus</td>
+                     <td>Poisson's Ratio</td>
+                     <td>Friction Angle</td>
+                     <td>Cohesion</td>
+                     <td>RQD</td>
+
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr ng-repeat="rtd in rock_type_details">
+                     <td>{{rtd.rock_type}}</td>
+                     <td>{{rtd.ucs}}</td>
+                     <td>{{rtd.tensile_strength}}</td>
+                     <td>{{rtd.youngs_modulus}}</td>
+                     <td>{{rtd.poissons_ration}}</td>
+                     <td>{{rtd.friction_angle}}</td>
+                     <td>{{rtd.cohesion_angle}}</td>
+                     <td>{{rtd.rqd}}</td>
+                  </tr>
+               </tbody>
+            </table>
+         
+            </div>
+            <div id="new_instrument_options" style="display:none">
+               <table class = "table">
+               <thead>
+                  <tr>
+                     <td>Database</td>
+                     <td>Detail</td>
+                  </tr>
+               </thead>
+                  <tbody>
+                     <tr>
+                        <td class="col-md-3">
+                           <button class="btn" id="extensometer">Extensometer</button>
+                        </td>
+                        <td ><a href = "http://www.geokon.com/extensometers/" target="blank">Detail of extensometer</a></td>
+                        <td height="60px"></td>
+                     </tr>
+                     <tr>
+                        <td class="col-md-3">
+                           <button class="btn" id='convergence'>Convergence</button>
+                             <td ><a href = "http://www.geokon.com/4425" target="blank">Detail of convergence</a></td>
+                        </td>
+                        <td height="60px"></td>
+                     </tr>
+                     <tr>
+                        <td class="col-md-3">
+                           <button class="btn" id="stressmeter">Stressmeter</button>
+                             <td ><a href = "http://www.geokon.com/stressmeters/" target="blank">Detail of stressmeter</a></td>
+                        </td>
+                        <td height="60px"></td>
+                     </tr>
+                     <tr>
+                        <td class="col-md-3">
+                           <button class="btn" id="pressure_cell">Pressure Cell</button>
+                             <td ><a href = "http://www.geokon.com/pressure-cells/" target="blank">Detail of pressure cell</a></td>
+                        </td>
+                        <td height="60px"></td>
+                     </tr>
+                     <tr>
+                        <td class="col-md-3">
+                           <button class="btn" id="sisc_cell">SISC</button>
+                             <td ><a href = "http://www.geokon.com/4360" target="blank">Detail of soft inclusion stressmeter cell</a></td>
+                        </td>
+                        <td height="60px"></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div id='extensometer_form' style="display:none">
+               <table>
+                  <tbody>
+                     <tr>
+                        <td class="col-md-3" style="min-width:200">
+                           Name of mine
+                           <input class='form-control' ng-model="ext.name_mine">
+                        </td>
+                        <td class="col-md-3" style="min-width:200">
+                           Instrument number
+                           <input class='form-control' ng-model="ext.inst_num">
+                        </td>
+                        <td class="col-md-3" style="min-width:200">
+                           Location
+                           <input class='form-control' ng-model="ext.loc">
+                        </td>
+                        <td class="col-md-3" style="min-width:200">
+                           Co-ordinate
+                           <input class='form-control' ng-model="ext.cord">
+                        </td>
+                        <td height="60px"></td>
+                     </tr>
+                     <tr>
+                        <td class="col-md-4">
+                           Total anchors
+                           <input class='form-control' ng-model="ext.anchor_tot">
+                        </td>
+                        <td class="col-md-4">
+                           Anchor1 depth
+                           <input class='form-control' ng-model="ext.anchor1_depth">
+                        </td>
+                        <td class="col-md-4">Anchor2 depth
+                           <input class='form-control' ng-model="ext.anchor2_depth">
+                        </td>
+                        <td class="col-md-4">Anchor3 depth
+                           <input class='form-control' ng-model="ext.anchor3_depth">
+                        </td>
+                        <td height="60px"></td>
+                     </tr>
+                     <tr>
+                        <td class="col-md-4">Anchor4 depth
+                           <input class='form-control' ng-model="ext.anchor4_depth">
+                        </td>
+                        <td class="col-md-4">Anchor5 depth
+                           <input class='form-control' ng-model="ext.anchor5_depth">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="col-md-4">
+                           Initial readings
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="col-md-4">
+                           Anchor1
+                           <input class='form-control' ng-model="ext.anchor1_initial_reading">
+                        </td>
+                        <td class="col-md-4">Anchor2
+                           <input class='form-control' ng-model="ext.anchor2_initial_reading">
+                        </td>
+                        <td class="col-md-4">Anchor3
+                           <input class='form-control' ng-model="ext.anchor3_initial_reading">
+                        </td>
+                        <td class="col-md-4">Anchor4
+                           <input class='form-control' ng-model="ext.anchor4_initial_reading">
+                        </td>
+                        <td height="60px"></td>
+                     <tr>
+                        <td class="col-md-4">Anchor5
+                           <input class='form-control' ng-model="ext.anchor5_initial_reading">
+                        </td>
+                        <td class="col-md-3"><button class='btn btn-primary' ng-click="add2()">Add</button></td>
+                     </tr>
+                     </tr>
+                  </tbody>
+               </table>
+               <table class="table">
+            <h2>Extensometer</h2>
+              <thead>
+                  <tr>
+                     <td>
+                         Name of mine
+                     </td>
+                     <td>
+                       Instrument number
+                     </td>
+                     <td>
+                       Location
+                     </td>
+                     <td> Co-ordinate</td>
+                     <td> Total anchors</td>
+                     <td> Anchor1 depth</td>
+                     <td>Anchor2 depth</td>
+                     <td>Anchor3 depth</td>
+                     <td>Anchor4 depth</td>
+                     <td>Anchor5 depth</td>
+                     <td>Initial Anchor1 readings</td>
+                     <td>Initial Anchor2 readings</td>
+                     <td>Initial Anchor3 readings</td>
+                     <td>Initial Anchor4 readings</td>
+                     <td>Initial Anchor5 readings</td>
+
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr ng-repeat="ext in extensometer">
+                     <td>{{ext.name_mine}}</td>
+                     <td>{{ext.inst_num}}</td>
+                     <td>{{ext.loc}}</td>
+                     <td>{{ext.cord}}</td>
+                     <td>{{ext.anchor_tot}}</td>
+                     <td>{{ext.anchor1_depth}}</td>
+                     <td>{{ext.anchor2_depth}}</td>
+                     <td>{{ext.anchor3_depth}}</td>
+                     <td>{{ext.anchor4_depth}}</td>
+                     <td>{{ext.anchor5_depth}}</td>
+                     <td>{{ext.anchor1_initial_reading}}</td>
+                     <td>{{ext.anchor2_initial_reading}}</td>
+                     <td>{{ext.anchor3_initial_reading}}</td>
+                     <td>{{ext.anchor4_initial_reading}}</td>
+                     <td>{{ext.anchor5_initial_reading}}</td>
+                  </tr>
+               </tbody>
+            </table>
+           
+            </div>
+            <div id='convergence_form' style="display:none">
+               <table>
+                  <tbody>
+                     <tr>
+                        <img src="img/convergence.png" style="margin-top:30px">
+                     </tr>
+                     <tr>
+                        <td class="col-md-3" style="min-width:200">
+                           Name of mine
+                           <input class='form-control' ng-model="conv.name_mine">
+                        </td>
+                        <td class="col-md-3" style="min-width:200">
+                           Instrument number
+                           <input class='form-control' ng-model="conv.inst_num">
+                        </td>
+                        <td class="col-md-3" style="min-width:200">
+                           Location
+                           <input class='form-control' ng-model="conv.inst_loc">
+                        </td>
+                        <td class="col-md-3" style="min-width:200">
+                           Co-ordinate
+                           <input class='form-control' ng-model="conv.inst_cord">
+                        </td>
+                        <td height="60px"></td>
+                     </tr>
+                     <tr>
+                        <td class="col-md-4">
+                           Initial Reading A to B
+                           <input class='form-control' ng-model="conv.reading_A_B">
+                        </td>
+                        <td class="col-md-4">
+                           Initial Reading B to C
+                           <input class='form-control' ng-model="conv.reading_B_C">
+                        </td>
+                        <td class="col-md-4">
+                           Initial Reading C to A
+                           <input class='form-control' ng-model="conv.reading_C_A">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="col-md-4">Date And Time of Installation
+                           <input class='form-control' ng-model="conv.date_time_installation">
+                        </td>
+                        <td class="col-md-4">Remarks
+                           <input class='form-control' ng-model="conv.remark">
+                        </td>
+                        <td class="col-md-4"><button class='btn btn-primary' ng-click="add3()">Add</button></td>
+                        <td height="60px"></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div id='stressmeter_form' style="display:none">
+               <table>
+                  <tbody>
+                     <tr>
+                        <td class="col-md-3" style="min-width:200">
+                           Name of mine
+                           <input class='form-control' ng-model="str.name_mine">
+                        </td>
+                        <td class="col-md-3" style="min-width:200">
+                           Instrument number
+                           <input class='form-control' ng-model="str.inst_num">
+                        </td>
+                        <td class="col-md-3" style="min-width:200">
+                           Location
+                           <input class='form-control' ng-model="str.location">
+                        </td>
+                       
+                        <td height="60px"></td>
+                     </tr>
+                     <tr>
+                      <td class="col-md-3" style="min-width:200">
+                           Co-ordinate
+                           <input class='form-control' ng-model="str.co_ordinate">
+                        </td>
+                        <td class="col-md-4">
+                           Stressmeter Depth
+                           <input class='form-control' ng-model="str.stressmeter_depth">
+                        </td>
+                        <td class="col-md-4">
+                           Stressmeter Location Geology
+                           
+                              <select class="form-control" ng-model="str.location_geology"  placeholder="Select an option">
+                                 
+                                   <option value="" disabled selected>Select your option</option>  
+                                 
+                                 <option>
+                                    BAS
+                                 </option>
+                                 <option>
+                                    Diorite(fresh)
+                                 </option>
+                                 <option>
+                                    Diorite(leach)
+                                 </option>
+                                 <option>
+                                    Frosterite
+                                 </option>
+                                 <option>
+                                    Garnet Calcite
+                                 </option>
+                                 <option>
+                                    HALO
+                                 </option>
+                                 <option>
+                                    Marbel
+                                 </option>
+                                 <option>
+                                    Massive Magnetite
+                                 </option>
+                              </select>
+                           
+                        </td>
+                       
+                     </tr>
+                     <tr>
+                      <td class="col-md-3">
+                           Stressmeter Reading (Hz)
+                           <input class='form-control' ng-model="str.stressmeter_reading">
+                        </td>
+                        <td class="col-md-3">Date And Time of Installation
+                           <input class='form-control' ng-model="str.date_time">
+                        </td>
+                        <td class="col-md-3">Remarks
+                           <input class='form-control' ng-model="str.remark">
+                        </td>
+                        <td class="col-md-3"><button class='btn btn-primary' ng-click="add4()">Add</button></td>
+                        <td height="60px"></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div id='pressure_cell_form' style="display:none">
+               <table>
+                  <tbody>
+                     <tr>
+                        <td class="col-md-3" style="min-width:200">
+                           Name of mine
+                           <input class='form-control' ng-model="pre.mine_name">
+                        </td>
+                        <td class="col-md-3" style="min-width:200">
+                           Instrument number
+                           <input class='form-control' ng-model="pre.inst_num">
+                        </td>
+                        <td class="col-md-3" style="min-width:200">
+                           Location
+                           <input class='form-control' ng-model="pre.loc">
+                        </td>
+                        <td class="col-md-3" style="min-width:200">
+                           Co-ordinate
+                           <input class='form-control' ng-model="pre.co_ordinate">
+                        </td>
+                        <td height="60px"></td>
+                     </tr>
+                     <tr>
+                        <td class="col-md-4">
+                           Pressure Cell Depth
+                           <input class='form-control' ng-model="pre.pressure_cell_depth">
+                        </td>
+                        <td class="col-md-4">
+                           Pressure Cell Location Geology
+                           
+                              <select class="form-control" ng-model="pre.loc_geology">
+                                 
+                                 <option>
+                                    BAS
+                                 </option>
+                                 <option>
+                                    Diorite(fresh)
+                                 </option>
+                                 <option>
+                                    Diorite(leach)
+                                 </option>
+                                 <option>
+                                    Frosterite
+                                 </option>
+                                 <option>
+                                    Garnet Calcite
+                                 </option>
+                                 <option>
+                                    HALO
+                                 </option>
+                                 <option>
+                                    Marbel
+                                 </option>
+                                 <option>
+                                    Massive Magnetite
+                                 </option>
+                              </select>
+                           
+                        </td>
+                        <td class="col-md-4">
+                           Pressure Cell Reading (Hz)
+                           <input class='form-control' ng-model="pre.reading">
+                        </td>
+                        <td class="col-md-4">Linear Gauge Factor (psi/digit)
+                           <input class='form-control' ng-model="pre.linear_gauge_factor">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="col-md-4">Date And Time of Installation
+                           <input class='form-control' ng-model="pre.date_time">
+                        </td>
+                        <td class="col-md-4">Remarks
+                           <input class='form-control' ng-model="pre.remark">
+                        </td>
+                         <td class="col-md-4"><button class='btn btn-primary' ng-click="add5()">Add</button></td>
+                        <td height="60px"></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div id='sisc_cell_form' style="display:none">
+               <table>
+                  <tbody>
+                     <tr>
+                        <td class="col-md-3" style="min-width:200">
+                           Name of mine
+                           <input class='form-control' ng-model="sis.mine_name">
+                        </td>
+                        <td class="col-md-3" style="min-width:200">
+                           Instrument number
+                           <input class='form-control' ng-model="sis.inst_num">
+                        </td>
+                        <td class="col-md-3" style="min-width:200">
+                           Location
+                           <input class='form-control' ng-model="sis.loc">
+                        </td>
+                        <td class="col-md-3" style="min-width:200">
+                           Co-ordinate
+                           <input class='form-control' ng-model="sis.co_ordinate">
+                        </td>
+                        <td height="60px"></td>
+                     </tr>
+                     <tr>
+                        <td class="col-md-4">
+                           SISC Cell Depth
+                           <input class='form-control' ng-model="sis.sisc_cell_depth">
+                        </td>
+                        <td class="col-md-4">
+                           SISC Cell Location Geology
+                           <div class="form-group">
+                              <select class="form-control" ng-model="sis.sisc_loc_geology">
+                                
+                                 <option>
+                                    BAS
+                                 </option>
+                                 <option>
+                                    Diorite(fresh)
+                                 </option>
+                                 <option>
+                                    Diorite(leach)
+                                 </option>
+                                 <option>
+                                    Frosterite
+                                 </option>
+                                 <option>
+                                    Garnet Calcite
+                                 </option>
+                                 <option>
+                                    HALO
+                                 </option>
+                                 <option>
+                                    Marbel
+                                 </option>
+                                 <option>
+                                    Massive Magnetite
+                                 </option>
+                              </select>
+                           </div>
+                        </td>
+                        <td class="col-md-4">
+                           SISC Cell Reading (Hz)
+                           <input class='form-control' ng-model="sis.sisc_cell_reading">
+                        </td>
+                        <td class="col-md-4">Gauge Factor (microinch/digit)
+                           <input class='form-control' ng-model="sis.gauge_factor">
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="col-md-4">Date And Time of Installation
+                           <input class='form-control' ng-model="sis.date_time">
+                        </td>
+                        <td class="col-md-4">Remarks
+                           <input class='form-control' ng-model="sis.remark">
+                        </td>
+ 						<td class="col-md-4"><button class='btn btn-primary' ng-click="add6()">Add</button></td>
+                        <td height="60px"></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+        <div id="item3" style="display:none">
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <div >
+                        Name of Mine
+                    </div>
+                    <input class="form-control" ng-model="m_act.mine_name">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div >
+                        Date of Activity
+                    </div>
+                    <input class="form-control" ng-model="m_act.date">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div >
+                        Panel/Area
+                    </div>
+                    <input class="form-control" ng-model="m_act.panel_area">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        Blasting (yes / no)
+                    </div>
+                    <input class="form-control" ng-model="m_act.blasting">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div >
+                        Balsting Area
+                    </div>
+                    <input class="form-control" ng-model="m_act.blast_area">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div >
+                        Detail of the blasting
+                    </div>
+                    <input class="form-control" ng-model="m_act.balst_details">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div >
+                        Data Entered by
+                    </div>
+                    <input class="form-control" ng-model="m_act.data_entered_by">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div >
+                        Other Activities
+                    </div>
+                    <input class="form-control" ng-model="m_act.other_activity">
+                </td>
+               
+            </tr>
+            <tr> <td>
+                    <button class="btn btn-primary" ng-click="add7()">Add</button>
+                </td></tr>
+        </tbody>
+    </table>
+</div>
+         <div id="item4" class="container" style="display:none">
+            <table >
+               <tbody>
+                  <tr>
+                     <td class="col-md-4">
+                        <div>Name</div>
+                        <input class='form-control' class="form-control'form-control" ng-model="g_pers.name">
+                     </td>
+                      <td class="col-md-4">
+                        <div>Designation</div>
+                        <input class='form-control' class="form-control'form-control" ng-model="g_pers.des">
+                     </td >
+                      <td class="col-md-4">
+                        <div >Email</div>
+                        <input class='form-control' class="form-control'form-control" ng-model="g_pers.email">
+                     </td>
+                      <td height="60px"></td>
+                  </tr>
+                  <tr>
+                     <td class="col-md-4">
+                        <div>Phone(work)</div>
+                        <input class='form-control' class="form-control'form-control" ng-model="g_pers.phone_work">
+                     </td>
+                  
+                     <td class="col-md-4">
+                        <div>Phone(home)</div>
+                        <input class='form-control' class="form-control'form-control" ng-model="g_pers.phone_home">
+                     </td>
+                 
+                     <td class="col-md-4">
+                        <div >Current address</div>
+                        <input class='form-control' class="form-control'form-control" ng-model="g_pers.curr_add">
+                     </td>
+                      <td height="60px"></td>
+                  </tr>
+                  <tr>
+                     <td class="col-md-4">
+                        <div>Permanent Address</div>
+                        <input class='form-control' class="form-control'form-control" ng-model="g_pers.per_add">
+                     </td>
+                     <td class="col-md-4"><button class='btn btn-primary' ng-click="add8()">Add</button></td>
+                       
+                      <td height="60px"></td>
+                  </tr>
+                  
+               </tbody>
+            </table>
+         </div>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+      <script src="controller/controller.js"></script>
+   </body>
+</html>
