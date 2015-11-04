@@ -1,4 +1,5 @@
 var express = require('express');
+var debug = require('debug')('ascema');
 var http = require('http');
 var app = express();
 var mongojs = require('mongojs');
