@@ -115,6 +115,8 @@ db.geotech_personnel.insert(req.body,function(err,docs){
 res.json();
 });
 });
-var server = app.listen(3000, '0.0.0.0', function() {
-  console.log('Listening on port %d', server.address().port);
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function() {
+    debug('Express server listening on port ' + server.address().port);
 });
