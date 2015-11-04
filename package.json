@@ -1,14 +1,27 @@
 {
-  "name": "hack",
-  "version": "1.0.0",
-  "description": "",
+  "name": "btp",
+  "version": "0.0.0",
+  "description": "\"Node App For BTP\"",
   "main": "index.js",
+  "dependencies": {
+    "body-parser": "~1.14.1",
+    "express": "~4.13.3",
+    "mongojs": "~1.4.0"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Ajay",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.13.0"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AKGP/nodedeploytest.git"
+  },
+  "keywords": [
+    "\"Btp\""
+  ],
+  "author": "\"ajay\"",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/AKGP/nodedeploytest/issues"
   }
 }
