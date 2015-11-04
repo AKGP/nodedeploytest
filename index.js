@@ -114,5 +114,7 @@ db.geotech_personnel.insert(req.body,function(err,docs){
 res.json();
 });
 });
-app.listen(8080);
-console.log("Server is running on 8080");
+http.createServer(app).listen(app.get('port'),
+  function(){
+    console.log("Express server listening on port " + app.get('port'));
+});
